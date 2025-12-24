@@ -12,19 +12,67 @@
 
 <form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
 
-  First name: <label>
-    <input type="text" th:field="*{firstName}">
-</label>
+    First name: <label>
+        <input type="text" th:field="*{firstName}">
 
     <br><br>
 
-  First name: <label>
-    <input type="text" th:field="*{lastName}">
-</label>
+    </label>
+      First name: <label>
+        <input type="text" th:field="*{lastName}">
+    </label>
 
     <br><br>
 
-  <input type="submit" value="submit" />
+    <label for="country">Country:</label>
+    <!-- when using hardcoded values: -->
+<!--    <select id="country" th:field="*{country}">-->
+<!--        <option th:value="Brazil">Brazil</option>-->
+<!--    </select>-->
+
+    <!-- when using a list of values from the controller -->
+    <select id="country" th:field="*{country}">
+        <option th:each="tempCountry : ${countries}"  th:value="${tempCountry}" th:text="${tempCountry}"></option>
+    </select>
+
+    <br><br>
+
+<!--    <fieldset>-->
+<!--        Favorite Language:-->
+<!--        <label>-->
+<!--            <input th:type="radio" th:field="*{favoriteLanguage}" th:value="Go">-->
+<!--            Go-->
+<!--        </label>-->
+<!--        <label>-->
+<!--            <input th:type="radio" th:field="*{favoriteLanguage}" th:value="Java">-->
+<!--            Java-->
+<!--        </label>-->
+<!--        <label>-->
+<!--            <input th:type="radio" th:field="*{favoriteLanguage}" th:value="Cpp">-->
+<!--            Cpp-->
+<!--        </label>-->
+<!--    </fieldset>-->
+
+    <label for="favoriteLanguageSelector">Favorite Language:</label>
+    <input id="favoriteLanguageSelector" type="radio"
+        th:field="*{favoriteLanguage}"
+        th:each="tempLang : ${languages}"
+        th:value="${tempLang}"
+        th:text="${tempLang}"/>
+
+    <br><br>
+
+    <label for="operatingSystems">Operating Systems:</label>
+    <input id="operatingSystems" type="checkbox"
+        th:field="*{favoriteOperatingSystems}"
+        th:each="tempSystem : ${favoriteOperatingSystems}"
+        th:value="${tempSystem}"
+        th:text="${tempSystem}"/>
+
+    <br><br>
+
+    <input type="submit" value="submit" />
+
 </form>
 
 </body>

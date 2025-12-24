@@ -9,7 +9,20 @@
 
 <h3>Student Confirmation</h3>
 
-The student is confirmed: <span th:text="${student.firstName} + ' ' + ${student.lastName}"></span>
+Student Name: <span th:text="${student.firstName} + ' ' + ${student.lastName}"></span>
 
+<br><br>
+
+Country: <span th:text="${student.country}"></span>
+
+<br><br>
+
+Favorite Language: <span th:text="${student.favoriteLanguage}"></span>
+
+<br><br>
+
+<ul>
+    <li th:each="tempSystem : ${student.favoriteOperatingSystems}" th:text="${tempSystem}"></li>
+</ul>
 </body>
 </html>
